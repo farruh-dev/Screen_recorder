@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js"
+    "dev": "live-server . --no-css-inject",
+    "css": "tailwindcss -i src/tailwind.css -o dist/main.css --watch"
   },
   "keywords": [],
   "author": "",
