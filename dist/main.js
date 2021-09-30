@@ -4,4 +4,5 @@ let stream = null,
     chunks = [],
     recorder = null,
     startButton = null,
-    stopButton = null,
+    stopButton = null,   
+    manajhb
