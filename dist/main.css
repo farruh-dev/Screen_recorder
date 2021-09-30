@@ -779,10 +779,6 @@ video {
   transition-duration: 300ms;
 }
 
-.hover\:opacity-50:hover {
-  opacity: 0.5;
-}
-
 .hover\:opacity-90:hover {
   opacity: 0.9;
 }

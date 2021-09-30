@@ -6,9 +6,8 @@
   "scripts": {
     "dev": "live-server . --no-css-inject",
     "css": "tailwindcss -i src/tailwind.css -o dist/main.css --watch",
-    "devStart": "nodemon dist/main.js",
-    "start": "node dist/main.js"
-
+    "devStart": "nodemon server.js",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -16,5 +15,8 @@
   "devDependencies": {
     "live-server": "^1.2.1",
     "tailwindcss": "^2.2.16"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }

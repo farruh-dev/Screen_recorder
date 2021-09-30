@@ -79,12 +79,14 @@ function handleStop(){
     let currentMonth = new Date().getMonth()
     let currentYear = new Date().getFullYear()
 
-    if(currentDate > 10){
+    if(currentDate < 10){
         currentDate = "0" + currentDate
     }
-    if(currentMonth > 10){
+    if(currentMonth < 10){
         currentMonth = "0" + currentMonth
     }
+
+    console.log(currentDate, currentMonth);
 
     const videoName = `${currentDate}-${currentMonth}-${currentYear}_${Date.now()}` 
 
