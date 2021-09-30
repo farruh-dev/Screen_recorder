@@ -29,23 +29,26 @@ async function setupStream() {
     }
 }
 
-function setupVideoFeedback(){
+function setupVideoFeedback() {
     if (stream) {
         const video = document.querySelector('.video-feedback')
         video.srcObject = stream;
         video.play();
-    }else{
+    } else {
         console.warn("No stream available");
     }
 }
 
-async function startRecording(){
+async function startRecording() {
     await setupStream()
 
-    if(stream && audio){
+    if (stream && audio) {
         mixedStream = new MediaStream([...stream.getTracks(), ...audio.getTracks()])
 
-        recorder = new MediaRecorder(mixedStream)
+        recorder = new MediaRecorder(mixedStream, {
+            videoBitsPerSecond: 20000000
+        })
+
         recorder.ondataavailable = handleDataAvailable;
         recorder.onstop = handleStop;
         recorder.start(200);
@@ -54,12 +57,12 @@ async function startRecording(){
         stopButton.disabled = false;
 
         console.log("Recording has started...");
-    }else{
+    } else {
         console.warn("No stream available");
     }
 }
 
-function handleDataAvailable(e){
+function handleDataAvailable(e) {
     chunks.push(e.data)
 }
 
@@ -70,7 +73,7 @@ function stopRecording() {
     console.log("Recording has stopped...");
 }
 
-function handleStop(){
+function handleStop() {
     const blob = new Blob(chunks, {
         type: "video/mp4"
     })
@@ -79,16 +82,16 @@ function handleStop(){
     let currentMonth = new Date().getMonth()
     let currentYear = new Date().getFullYear()
 
-    if(currentDate < 10){
+    if (currentDate < 10) {
         currentDate = "0" + currentDate
     }
-    if(currentMonth < 10){
+    if (currentMonth < 10) {
         currentMonth = "0" + currentMonth
     }
 
     console.log(currentDate, currentMonth);
 
-    const videoName = `${currentDate}-${currentMonth}-${currentYear}_${Date.now()}` 
+    const videoName = `${currentDate}-${currentMonth}-${currentYear}_${Date.now()}`
 
     downloadButton.href = URL.createObjectURL(blob);
     downloadButton.download = `${videoName}.mp4`;
@@ -102,7 +105,10 @@ function handleStop(){
         const rc = document.querySelector('.recorded-video-wrap')
 
         rc.classList.remove("hidden")
-        rc.scrollIntoView({ behavior: "smooth", block: "start"});
+        rc.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
     }
 
     stream.getTracks().forEach(track => track.stop());
@@ -111,7 +117,7 @@ function handleStop(){
     console.log("Recording has been prepared...");
 }
 
-window.addEventListener("load",  () => {
+window.addEventListener("load", () => {
     startButton = document.querySelector(".start-recording")
     stopButton = document.querySelector(".stop-recording")
     downloadButton = document.querySelector(".download-video")
