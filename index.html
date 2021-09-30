@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,13 +9,50 @@
 
     <link rel="stylesheet" href="dist/main.css">
 </head>
+
 <body class="bg-gray-800 text-white">
 
     <header class="bg-gray-900">
         <div class="container mx-auto flex justify-center items-center py-4">
-
+            <h1 class="text-2x1 font-bold uppercase">Screen Recorder</h1>
         </div>
     </header>
+
+    <main class="overflow-hidden">
+        <div class=" container mx-auto py-8 px-4">
+            <h2 class=" text-xl text-gray-500 uppercase font-light mb-4">Video Recorder</h2>
+
+            <video src="" autoplay class=" video-feedback bg-black w-full h-auto mb-4"></video>
+
+            <div class=" flex justify-center items-center -mx-4 mb-8">
+                <button
+                    class="start-recording mx-4 flex-1 bg-gradient-to-br from-green-800 to-green-500 p-4 uppercase text-lg font-bold transition duration-300 hover:opacity-90 disabled:opacity-50">
+                    Start Recording
+                </button>
+                <button disabled
+                    class="start-recording mx-4 flex-1 bg-gradient-to-br from-green-800 to-green-500 p-4 uppercase text-lg font-bold transition duration-300 hover:opacity-90 disabled:opacity-50">
+                    Stop Recording
+                </button>
+            </div>
+
+            <div class="recorded-video-wrap hidden">
+                <h2 class=" text-xl text-gray-500 uppercase font-light mb-4">Download your video</h2>
+
+                <video src="" class="recorded-video bg-black w-full h-auto mb-4"></video>
+
+                <div class="flex justify-center items-center -mx-4 mb-8">
+                    <a
+                        href="" disabled
+                        class="download-video text-center  mx-4 flex-1 bg-gradient-to-br from-green-800 to-green-500 p-4 uppercase text-lg font-bold transition duration-300 hover:opacity-90 disabled:opacity-50">
+                        Download Video
+                    </a>  
+                </div>
     
+            </div>
+        </div>
+    </main>
+
+    <script src="dist/main.js"></script>
 </body>
+
 </html>
